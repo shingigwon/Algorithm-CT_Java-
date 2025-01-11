@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		int N = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
+
+		int[] arr = new int[N];
+
+		st = new StringTokenizer(br.readLine());
+		
+		for (int i = 0; i < N; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		}
+
+		int sum = 0;
+		int max = Integer.MIN_VALUE;
+		
+		for (int i=0; i<N; i++) {
+			sum+=arr[i];
+			
+			if(i>=K-1) {
+				max = sum>max?sum:max;
+				sum-=arr[i-K+1];
+			}
+		}
+		
+		System.out.println(max);
+		br.close();
+	}
+
+}
