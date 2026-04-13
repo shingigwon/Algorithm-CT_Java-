@@ -2,10 +2,10 @@
 
 ![BFS vs DFS](https://velog.velcdn.com/images/jh991012/post/044e12ef-ef8b-4974-a2c0-e044af6ce9f3/image.gif)
 
-## BFS (Breadth First Search : 너비 우선 탐색)
+## [BFS (Breadth First Search : 너비 우선 탐색)](https://en.wikipedia.org/wiki/Breadth-first_search)
 루트 노드에서 시작해 인접한 노드를 먼저 탐색하는 방식. 가까운 정점부터 방문하며 **큐**로 구현한다.
 
-## DFS (Depth First Search : 깊이 우선 탐색)
+## [DFS (Depth First Search : 깊이 우선 탐색)](https://en.wikipedia.org/wiki/Depth-first_search)
 루트 노드에서 시작해 한 분기를 끝까지 탐색한 후 다음 분기로 넘어가는 방식. **스택 또는 재귀**로 구현한다.
 
 ---
