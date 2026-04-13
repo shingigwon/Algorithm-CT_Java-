@@ -1,4 +1,4 @@
-# 백트래킹 (Backtracking)
+# [백트래킹 (Backtracking)](https://en.wikipedia.org/wiki/Backtracking)
 
 가능한 모든 경우를 탐색하되, 조건에 맞지 않으면 즉시 가지를 잘라내는 방식. DFS 기반으로 구현한다.
 
