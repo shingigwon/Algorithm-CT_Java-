@@ -69,12 +69,12 @@ ex. 최소 비용 경로
 - 0/1 배낭 : 각 아이템 1번만 사용 → `dp[i-1]` 참조
 - 완전 배낭 : 각 아이템 무제한 → `dp[i]` 참조
 
-### 4. LIS (최장 증가 부분 수열)
+### 4. [LIS (최장 증가 부분 수열)](https://en.wikipedia.org/wiki/Longest_increasing_subsequence)
 `dp[i]` = i번째에서 끝나는 LIS 길이
 - O(N²) : `dp[i] = max(dp[j] + 1)` (j < i, arr[j] < arr[i])
 - O(N log N) : 이분탐색 활용
 
-### 5. LCS (최장 공통 부분 수열)
+### 5. [LCS (최장 공통 부분 수열)](https://en.wikipedia.org/wiki/Longest_common_subsequence)
 `dp[i][j]` = s1[0..i], s2[0..j]의 LCS 길이
 - 같으면 : `dp[i][j] = dp[i-1][j-1] + 1`
 - 다르면 : `dp[i][j] = max(dp[i-1][j], dp[i][j-1])`
@@ -89,7 +89,7 @@ ex. 행렬 연쇄 곱셈, 팰린드롬 분할
 `dp[visited][cur] = min(dp[visited | (1<<next)][next] + cost)`
 ex. TSP (외판원 순회)
 
-### 8. DP + 그래프 (플로이드-워셜)
+### 8. DP + 그래프 ([플로이드-워셜](https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm))
 모든 정점 쌍의 최단 거리
 `dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])`
 음수 간선 가능, O(V³)
