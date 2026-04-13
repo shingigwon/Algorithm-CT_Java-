@@ -4,7 +4,7 @@ public class Backtracking {
 
     static int N, R;
     static int[] arr;
-    static boolean[] visited;
+    static boolean[] used;
     static List<Integer> cur = new ArrayList<>();
 
     // 순열 - 순서 있음, 중복 없음 (ex. N과 M (1))
@@ -15,15 +15,15 @@ public class Backtracking {
         }
 
         for (int i = 0; i < N; i++) {
-            if (visited[i]) continue;
+            if (used[i]) continue;
 
-            visited[i] = true;
+            used[i] = true;
             cur.add(arr[i]);
 
             permutation(depth + 1);
 
             // 복원 - 빠뜨리면 다른 경로 탐색 불가
-            visited[i] = false;
+            used[i] = false;
             cur.remove(cur.size() - 1);
         }
     }
@@ -55,7 +55,7 @@ public class Backtracking {
         for (int i = 0; i < N; i++) {
             cur.add(arr[i]);
 
-            permutationWithRepetition(depth + 1); // visited 체크 없음
+            permutationWithRepetition(depth + 1); // used 체크 없음
 
             cur.remove(cur.size() - 1);
         }
