@@ -1,47 +1,43 @@
 import java.io.*;
 
-public class Solution {
-	static int N,ret;
-	static boolean[] colVis, rdVis, ldVis;
-	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int T = Integer.parseInt(br.readLine());
-		
-		for(int t=1; t<=T; t++) {
-			N = Integer.parseInt(br.readLine());
-			ret = 0;
-			colVis = new boolean[N];
-			rdVis = new boolean[2*N-1];
-			ldVis = new boolean[2*N-1];
-			
-			comb(0);
-			System.out.printf("#%d %d\n",t,ret);
-		}
-		br.close();
-	}
-	
-	static void comb(int row) {
-		if(row==N) {
-			ret++;
-			return;
-		}
-		
-		for(int col=0; col<N; col++) {
-			if(colVis[col]||rdVis[row+col]||ldVis[row-col+N-1])
-				continue;
-			
-			colVis[col] = true;
-			rdVis[row+col]=true;
-			ldVis[row-col+N-1] = true;
-			
-			comb(row+1);
-			
-			colVis[col] = false;
-			rdVis[row+col]=false;
-			ldVis[row-col+N-1] = false;
-			
-		}
-		
-		
-	}
-}	
+class Solution{
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int T = Integer.parseInt(br.readLine());
+
+        for(int tc=1; tc<=T; tc++){
+            int N = Integer.parseInt(br.readLine());
+            int[] board = new int[N];
+            int res = 0;
+
+            res += dfs(0, N, board);
+
+            System.out.printf("#%d %d\n", tc, res);
+        }
+    }
+
+    static int dfs(int row, int N, int[] board){
+        if(row==N)
+            return 1;
+
+        int res = 0;
+
+        for(int col=0; col<N; col++){
+            if(!isCheck(row, col, board)) continue;
+
+            board[row] = col;
+            res+=dfs(row+1, N, board);
+        }
+
+        return res;
+    }
+
+    static boolean isCheck(int row, int col, int[] board){
+        for(int i=0; i<row; i++){
+            if(board[i]==col) return false;
+            if(Math.abs(board[i]-col) == Math.abs(i-row)) return false;
+        }
+        return true;
+    }
+}
